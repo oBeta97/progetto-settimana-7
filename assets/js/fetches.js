@@ -55,9 +55,9 @@ async function ReadKakapo(kakapoId){
 
 async function UpdateKakapo(kakapoId, updatedKakapo){
     return await fetch(connectionData.connectionString + `/${kakapoId ?? ''}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedKakapo),
         headers: {
-            method: "PUT",
-            body: JSON.stringify(updatedKakapo),
             "Authorization": connectionData.bearerToken,
             'Content-Type': 'application/json',
         }
@@ -78,10 +78,10 @@ async function UpdateKakapo(kakapoId, updatedKakapo){
     });
 }
 
-async function DeleteKakapo(){
-    return await fetch(connectionData.connectionString, {
+async function DeleteKakapo(kakapoId){
+    return await fetch(connectionData.connectionString + `/${kakapoId ?? ''}`, {
+        method: "DELETE",
         headers: {
-            method: "DELETE",
             "Authorization": connectionData.bearerToken,
             'Content-Type': 'application/json',
         }

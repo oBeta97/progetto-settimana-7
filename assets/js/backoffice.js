@@ -5,18 +5,22 @@ const kakapoPrice = document.getElementById('kakapoPrice');
 const kakapoImgUrl = this.document.getElementById('kakapoImgUrl');
 const kakapoImg = this.document.getElementById('kakapoImg');
 const kakapoImgAlt = this.document.getElementById('kakapoImgAlt');
+const insertKakapoForm = this.document.getElementById('insertKakapo');
 
 window.addEventListener('load', function (event) {
+
     const kakapoId = new URLSearchParams(location.search).get('kakapoId');
+
     const backOfficeTitleSpan = this.document.getElementById('backOfficeTitleSpan');
     const submitButton = this.document.getElementById('submitButton');
-    const insertKakapoForm = this.document.getElementById('insertKakapo');
+    const resetForm = this.document.getElementById('resetForm');
 
     if (kakapoId) {
         backOfficeTitleSpan.innerText = 'Modifica';
         submitButton.innerText = 'Changhe the kakapo!'
 
         SetInputs(kakapoId);
+        AddDeleteButton(kakapoId);
     }
     else {
         backOfficeTitleSpan.innerText = 'Inserisci';
@@ -49,15 +53,31 @@ window.addEventListener('load', function (event) {
 
     })
 
+    resetForm.addEventListener('click', function(event){
+        event.preventDefault() 
+        const reset = confirm('Vuoi resettare il form?')
+        if(reset)
+            insertKakapoForm.reset()
+    });
+
 });
 
 
 async function SetNewKakapo(kakapo) {
 
-    const createdKakapo = await CreateKakapo(kakapo);
+    const addNewKakapo = confirm('Do you want to give birth to the kakapo? ')
 
-    if (createdKakapo)
-        alert('A new Kakapo has born! We are super happy about that, right? 😡');
+    if(addNewKakapo){
+        const createdKakapo = await CreateKakapo(kakapo);
+    
+        if (createdKakapo){
+            alert('A new Kakapo has born! We are super happy about that, right? 😡');
+            window.location.replace(`?kakapoId=${createdKakapo['_id']}`);
+        }
+    }
+    else{
+        insertKakapoForm.reset()
+    }
 
 }
 
@@ -68,6 +88,7 @@ async function EvolveKakapo(kakapoId, kakapo) {
     if (updatedKakapo){
         alert(`${kakapo.name} has born! Now he is a super Kakapo!`);
         SetInputs(kakapoId);
+        let modal = new bootstrap.Modal()
     }
 
 
@@ -92,5 +113,29 @@ async function SetInputs(kakapoId) {
     kakapoImg.src = kakapoDetails.imageUrl
 
     uselessCheckBox.checked = true;
+
+}
+
+async function AddDeleteButton(kakapoId){
+    
+    const formButtonsContainer = document.getElementById('formButtonsContainer');
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn btn-danger';
+    button.innerText = 'Kill the Kakapo!';
+
+    button.addEventListener('click',function(event){
+        const theUserIsAMonster = confirm('Are you a monster or what?! Want you to kill this cuttie parrot? 😭🦜');
+
+        if(theUserIsAMonster){
+            DeleteKakapo(kakapoId);
+            alert(`You killed it!... What a monster you are! 😭`);
+            window.location.replace(`./index.html`);
+        }
+
+    });
+
+    formButtonsContainer.appendChild(button);
 
 }

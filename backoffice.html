@@ -58,6 +58,9 @@
                             </p>
                             <p class="card-text"><small class="text-body-secondary">I'm like a cocò! <i>(hen style
                                         no jutsu)</i></small></p>
+
+                            <a href="./index.html" class="btn btn-success">Back to Kakapos Shop!</a>
+
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -74,10 +77,10 @@
 
                 <section class="col">
                     <article class="card">
-                        <img src="..."
-                            id="kakapoImg"
-                            class="card-img-top d-none" alt="image didn't found">
-                        <span id="kakapoImgAlt" class="text-secondary text-center border border-1 border-light-subtle d-block mt-4 mx-auto p-3">Image preview, set the img url to see the result</span>
+                        <img src="..." id="kakapoImg" class="card-img-top d-none" alt="image didn't found">
+                        <span id="kakapoImgAlt"
+                            class="text-secondary text-center border border-1 border-light-subtle d-block mt-4 mx-auto p-3">Image
+                            preview, set the img url to see the result</span>
                         <div class="card-body">
                             <form id="insertKakapo">
                                 <div class="mb-3">
@@ -98,17 +101,22 @@
                                 <div class="mb-3">
                                     <label for="kakapoImgUrl" class="form-label">Kakapo image URL</label>
                                     <input required type="text" class="form-control" id="kakapoImgUrl">
-                                    <div id="kakapoImgUrl" class="form-text">Click away from the input to see the preview! :3</div>
+                                    <div id="kakapoImgUrl" class="form-text">Click away from the input to see the
+                                        preview! :3</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="kakapoPrice" class="form-label">Kakapo price</label>
                                     <input required type="number" class="form-control" id="kakapoPrice">
                                 </div>
                                 <div class="mb-3 form-check">
-                                    <input required type="checkbox" class="form-check-input" id="uselessCheckBox" >
+                                    <input required type="checkbox" class="form-check-input" id="uselessCheckBox">
                                     <label class="form-check-label" for="uselessCheckBox">I love this kakapo!!!</label>
                                 </div>
-                                <button type="submit" id="submitButton" class="btn btn-primary" style="background-color: #b3db72;"></button>
+                                <div id="formButtonsContainer" class="d-flex justify-content-between">
+                                    <button type="submit" id="submitButton" class="btn btn-primary"
+                                        style="background-color: #b3db72;"></button>
+                                        <button type="submit" id="resetForm" class="btn btn-secondary ">Reset</button>
+                                </div>
                             </form>
                         </div>
                     </article>
