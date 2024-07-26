@@ -71,8 +71,20 @@ async function SetNewKakapo(kakapo) {
         const createdKakapo = await CreateKakapo(kakapo);
     
         if (createdKakapo){
-            alert('A new Kakapo has born! We are super happy about that, right? 😡');
-            window.location.replace(`?kakapoId=${createdKakapo['_id']}`);
+            let modal = new MyModal(
+                'newKakapo',
+                `A new born`,
+                'A new Kakapo has born! We are super happy about that, right? 😡',
+                '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>',
+                {},
+                false
+            );
+            modal.show();
+
+            alert('A new Kakapo has born! We are super happy about that, right? 😡')
+            
+            // There's a bug!
+            window.location.replace(`?kakapoId=${createdKakapo['_id']}`)
         }
     }
     else{
@@ -86,9 +98,10 @@ async function EvolveKakapo(kakapoId, kakapo) {
     const updatedKakapo = await UpdateKakapo(kakapoId, kakapo);
 
     if (updatedKakapo){
-        alert(`${kakapo.name} has born! Now he is a super Kakapo!`);
+        let modal = new MyModal('newKakapo',`${kakapo.name}`,`${kakapo.name} has born! Now he is a super Kakapo!`,'<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>',{},false);
+        modal.show();
+
         SetInputs(kakapoId);
-        let modal = new bootstrap.Modal()
     }
 
 
