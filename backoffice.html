@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="vh-100 d-flex flex-column">
+<body class="d-flex flex-column">
 
     <header>
 
@@ -32,7 +32,7 @@
                             <a class="nav-link active" href="./backoffice.html">Back-office</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
+                    <form class="d-flex" role="search" id="searchKakapoForm">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
@@ -50,7 +50,7 @@
                 <div class="row g-0 align-items-center">
                     <div class="col-md-7">
                         <div class="card-body">
-                            <h1 class="card-title">Adotta un Kakapo :3</h1>
+                            <h1 class="card-title"><span id="backOfficeTitleSpan"></span> un Kakapo :3</h1>
                             <p class="card-text">
                                 Il cacapò detto anche strigope, è un grosso pappagallo terricolo, dalle abitudini
                                 notturne e
@@ -70,18 +70,46 @@
         </section>
 
         <section class="container my-5">
-            <div id="shopRow" class="shop row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            <div id="shopRow" class="shop row row-cols-1">
 
                 <section class="col">
                     <article class="card">
-                        <img src="https://www.gedistatic.it/content/gnn/img/lastampa/2021/11/25/233847595-f58be656-1dbd-4381-9633-1a65fb39f7c3.jpg"
-                            class="card-img-top" alt="Stressed Kakapo img">
+                        <img src="..."
+                            id="kakapoImg"
+                            class="card-img-top d-none" alt="image didn't found">
+                        <span id="kakapoImgAlt" class="text-secondary text-center border border-1 border-light-subtle d-block mt-4 mx-auto p-3">Image preview, set the img url to see the result</span>
                         <div class="card-body">
-                            <h2 class="card-title">Stressed Kakapo</h2>
-                            <p class="card-text">Here we have a stressed Kakapo that it did a Epicode exam. After
-                                ventordici hours of code he finally will sleep! 1 like 1 coffe for the kakapo</p>
-                            <a href="./backoffice.html?kakapoId=${}" class="btn btn-primary"
-                                style="background-color: #b3db72;">Details</a>
+                            <form id="insertKakapo">
+                                <div class="mb-3">
+                                    <label for="kakapoName" class="form-label">Kakapo name</label>
+                                    <input type="text" class="form-control" id="kakapoName"
+                                        aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">Make the name silly, like these gigantonormus
+                                        parrots :3 uwu!</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kakapoDescription" class="form-label">Kakapo description</label>
+                                    <input type="text" class="form-control" id="kakapoDescription">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kakapoBrand" class="form-label">Kakapo type</label>
+                                    <input type="text" class="form-control" id="kakapoBrand">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kakapoImgUrl" class="form-label">Kakapo image URL</label>
+                                    <input type="text" class="form-control" id="kakapoImgUrl">
+                                    <div id="kakapoImgUrl" class="form-text">Click away from the input to see the preview! :3</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kakapoPrice" class="form-label">Kakapo price</label>
+                                    <input type="number" class="form-control" id="kakapoPrice">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="uselessCheckBox" >
+                                    <label class="form-check-label" for="uselessCheckBox">Do you love it?</label>
+                                </div>
+                                <button type="submit" id="submitButton" class="btn btn-primary" style="background-color: #b3db72;"></button>
+                            </form>
                         </div>
                     </article>
                 </section>
@@ -100,5 +128,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+<script src="./assets/js/classes.js"></script>
+<script src="./assets/js/fetches.js"></script>
+<script src="./assets/js/backoffice.js"></script>
 
 </html>

@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="vh-100 d-flex flex-column">
+<body class="d-flex flex-column">
 
     <header>
 
@@ -70,8 +70,15 @@
         </section>
 
         <section class="container my-5">
-            <div id="shopRow" class="shop row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            
+            <div class="d-flex justify-content-center spinner-container">
+                <div class="spinner-grow text-success text-center" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
 
+            <div id="shopRow" class="shop row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                
                 <section class="col">
                     <article class="card">
                         <img src="https://www.gedistatic.it/content/gnn/img/lastampa/2021/11/25/233847595-f58be656-1dbd-4381-9633-1a65fb39f7c3.jpg"
@@ -100,5 +107,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/fetches.js"></script>
+    <script src="./assets/js/script.js"></script>
 
 </html>
